@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>失独者</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-size: 12px;
+    overflow-x: hidden;
+    background-color: #fff;
+    width: 100%;
+  }
+
+  .index {
+    width: 100%;
+    height: 100%;
+  }
+
+  .index .title1 {
+    margin-top: 4rem;
+    text-align: center;
+    color: #000000;
+    font-family: "Microsoft YaHei";
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+  }
+
+  .index .title {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+    color: #6A91BC;
+  }
+
+  .index .index_content {
+	margin: 0 auto;
+	margin-top: 1rem;
+	width: 65%;
+	text-align: left;
+	height: auto;
+	word-wrap: break-word;
+	word-break: break-all;
+	overflow: hidden;
+	font-size: 1.1rem;
+	line-height: 1.9rem;
+  }
+
+  .index .number {
+    width: 100%;
+    height: 100%;
+    margin-top: 1rem;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .index .index_number {
+    width: 100%;
+    height: 100%;
+    display: none;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+    color: #6A91BC;
+  }
+
+  .index .number img {
+    margin: 0 auto;
+    width: 35%;
+    height: auto;
+    text-align: center;
+  }
+
+  .header {
+    display: none;
+    margin-top: 4rem;
+    width: 100%;
+    height: 60rem;
+    font-family: "Microsoft YaHei";
+  }
+
+  .header_content {
+    width: 100%;
+    height: auto;
+  }
+
+  .header_content>p {
+    width: 80%;
+    margin-left: 10%;
+    height: auto;
+    text-align: center;
+    font-size: 1.16rem;
+    padding: 0.4rem;
+    transform: scaleX(1.01807);
+    font-weight: 350;
+    color: #2C2B2A;
+  }
+
+  .header_title {
+    font-size: 1.5rem;
+    margin-top: 1.4rem;
+    text-align: center;
+    transform: scaleX(1.00281);
+    color: #6A91BC;
+    font-weight: bold;
+  }
+
+  .flower {
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    background-color: gray;
+    position: relative;
+  }
+
+  .flower .imgContent {
+    position: absolute;
+    margin-top: 6%;
+    width: 19%;
+    height: auto;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .flower #paper {
+    width: 100%;
+    height: auto;
+    z-index: 31;
+  }
+
+  .flower .imgContent .paperContent {
+    position: absolute;
+    width: 70%;
+    height: 60%;
+    top: 20%;
+    left: 15%;
+    overflow: auto;
+    font-family: 'FZXiDengXian-Z06S';   
+  }
+
+  .flower .imgContent .paperContent .paperTitle {
+    font-weight: bold;
+	font-size: 1.2rem; 
+    /* font-size: 1.2rem; */
+    padding: 0.1rem;
+    display: none;
+  }
+
+  .flower .imgContent .paperContent .paperChildName {
+    font-size: 1.2rem; 
+    /* font-size: 1.2rem; */
+	font-weight: bold;
+    padding: 0.1rem;
+    display: none;
+  }
+
+  .flower .imgContent .paperContent .paperTime {
+	 /* font-size: 1.2rem; */
+    font-size: 1.2rem; 
+	margin-top: 1.5rem;
+    padding: 0.1rem;
+    display: none;
+  }
+
+  .flower .imgContent .paperContent .paperPargh {
+    margin-top: 1.2rem;
+	font-size: 1.2rem; 
+	/* font-size: 1.2rem; */
+    /* padding-top: 0.5rem; */
+    line-height: 1.8rem;
+    display: none;
+  }
+
+  .flower .imgFlower {
+    width: 33%;
+    height: auto;
+  }
+
+  .flower #img1 {
+    position: absolute;
+    top: -15%;
+    left: -68%;
+    z-index: -1;
+  }
+
+  .flower #img2 {
+    position: absolute;
+    top: -8%;
+    left: -33%;
+    z-index: -1;
+  }
+
+  .flower #img3 {
+    position: absolute;
+    top: -18%;
+    left: 13%;
+    z-index: -1;
+  }
+
+  .flower #img4 {
+    position: absolute;
+    top: -14%;
+    left: 65%;
+    z-index: -1;
+  }
+
+  .flower #img5 {
+    position: absolute;
+    top: -18%;
+    left: 100%;
+    z-index: -1;
+  }
+
+  .flower #img6 {
+    position: absolute;
+    top: 13%;
+    left: -82%;
+    z-index: -1;
+  }
+
+  .flower #img7 {
+    position: absolute;
+    top: 10%;
+    left: -52%;
+    z-index: -1;
+  }
+
+  .flower #img8 {
+    position: absolute;
+    top: 15%;
+    left: -18%;
+    z-index: -1;
+  }
+
+  .flower #img9 {
+    position: absolute;
+    top: 23%;
+    left: 90%;
+    z-index: -1;
+  }
+
+  .flower #img10 {
+    position: absolute;
+    top: 8%;
+    left: 106.5%;
+    z-index: -1;
+  }
+
+  .flower #img11 {
+    position: absolute;
+    top: 0%;
+    left: 124%;
+    z-index: -1;
+  }
+
+  .flower #img12 {
+    position: absolute;
+    top: 28%;
+    left: 122%;
+    z-index: -1;
+  }
+
+  .flower #img13 {
+    position: absolute;
+    top: 19%;
+    left: 149%;
+    z-index: -1;
+  }
+
+  .flower #img14 {
+    position: absolute;
+    top: 44%;
+    left: -90%;
+    z-index: 1;
+  }
+
+  .flower #img15 {
+    position: absolute;
+    top: 33%;
+    left: -74%;
+    z-index: -1;
+  }
+
+  .flower #img16 {
+    position: absolute;
+    top: 46%;
+    left: -64%;
+    z-index: -2;
+  }
+
+  .flower #img17 {
+    position: absolute;
+    top: 62%;
+    left: -70%;
+    z-index: -1;
+  }
+
+  .flower #img18 {
+    position: absolute;
+    top: 31%;
+    left: -45%;
+    z-index: -1;
+  }
+
+  .flower #img19 {
+    position: absolute;
+    top: 72%;
+    left: -44%;
+    z-index: -1;
+  }
+
+  .flower #img20 {
+    position: absolute;
+    top: 58%;
+    left: -24%;
+    z-index: -1;
+  }
+
+  .flower #img21 {
+    position: absolute;
+    top: 40.5%;
+    left: -21%;
+    z-index: -1;
+  }
+
+  .flower #img22 {
+    position: absolute;
+    top: 52%;
+    left: 93%;
+    z-index: -1;
+  }
+
+  .flower #img23 {
+    position: absolute;
+    top: 47%;
+    left: 122%;
+    z-index: -1;
+  }
+
+  .flower #img24 {
+    position: absolute;
+    top: 75%;
+    left: 99%;
+    z-index: -1;
+  }
+
+  .flower #img25 {
+    position: absolute;
+    top: 71%;
+    left: 131%;
+    z-index: -1;
+  }
+
+  .flower #img26 {
+    position: absolute;
+    width: 31%;
+    top: 48%;
+    left: 154%;
+    z-index: -1;
+  }
+
+  .flower #img27 {
+    position: absolute;
+    top: 90%;
+    left: -13%;
+    z-index: -1;
+  }
+
+  .flower #img28 {
+    position: absolute;
+    top: 96%;
+    left: 23%;
+    z-index: -1;
+  }
+
+  .flower #img29 {
+    position: absolute;
+    top: 90%;
+    left: 55%;
+    z-index: -1;
+  }
+
+  .flower #img30 {
+    position: absolute;
+    top: 97%;
+    left: 95%;
+    z-index: -1;
+  }
+
+  .content{
+    width: 100%;
+    height: auto;
+    /* margin-top: 2rem; */
+    /* padding: 5%; */
+  }
+  .content h2{
+      font-size: 2rem;
+  }
+  .content h4{
+      margin-left: 20%;
+      font-size: 1.5rem;
+      font-weight: bold;
+  }
+  .content p{
+      font-size: 1.2rem;
+      width: 60%;
+      margin-left: 20%;
+      text-indent:2em;
+      line-height: 2rem;
+      margin-top: 1rem;
+  }
+  .content span{
+      margin-top: 0;
+      display: block;
+      font-size: 1rem;
+      color: rgb(167, 175, 175);
+      width: 60%;
+      margin-left: 20%;
+      zoom: 0.8;
+      text-align: center;
+  }
+  .content img{
+      width: 55%;
+      /* height: auto; */
+      margin-left: 22.5%;
+  }
+  .content div{
+    width: 55%;
+      /* height: auto; */
+    margin-left: 22.5%;
+  }
+
+  .header,.content{
+    display: none;
+  }
+  
+  /* 滚动条样式 */
+  .flower .imgContent .paperContent::-webkit-scrollbar {
+    width: 4px;
+    /*height: 4px;*/
+  }
+
+  .flower .imgContent .paperContent::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .flower .imgContent .paperContent::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  /* body::-webkit-scrollbar {
+    width: 4px;
+    /*height: 4px;*/
+  /* } */ 
+
+  /* body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.1);
+  } */
+  
+</style>
+<script>
+    function getStyle(obj,name){
+        if(obj.currentStyle){
+            //适用IE
+            return obj.currentStyle[name];
+        }else{
+            //适用Chrome,FF
+            return getComputedStyle(obj,false)[name];
+        }
+    }
+    window.onload = function(){
+        // let papertitle = document.getElementsByClassName("paperTitle");
+        // let paperChildName = document.getElementsByClassName("paperChildName");
+        // let paperPargh = document.getElementsByClassName("paperPargh");
+        // for(let i = 0;i<papertitle.length;i++){
+        //     papertitle[i].style.display = 'none';
+        //     paperChildName[i].style.display = 'none';
+        //     paperPargh[i].style.display = 'none';
+        // }
+        
+        reSize();
+        // papertitle[0].style.display = 'block';
+        // paperChildName[0].style.display = 'block';
+        // paperPargh[0].style.display = 'block';
+
+        document.getElementsByClassName("index")[0].style.display = 'block';
+        document.getElementsByClassName("header")[0].style.display = 'none';
+        document.getElementsByClassName("content")[0].style.display = 'none';
+    }
+    function reSize(){
+        let paper = document.getElementsByClassName("paperContent")[0];
+        let paperWidth=Number(getStyle(paper,'width').replace('px',''));
+        let scaleNum = paperWidth/203.75;
+        paper.style.zoom = scaleNum;
+    }
+    function clickFlower(obj){
+        let imgNum = obj.id.replace("img",'');
+        let papertitle = document.getElementsByClassName("paperTitle");
+        let paperChildName = document.getElementsByClassName("paperChildName");
+        let paperPargh = document.getElementsByClassName("paperPargh");
+        for(let i = 0;i<papertitle.length;i++){
+            papertitle[i].style.display = 'none';
+            paperChildName[i].style.display = 'none';
+            paperPargh[i].style.display = 'none';
+        }
+
+        papertitle[imgNum-1].style.display = 'block';
+        paperChildName[imgNum-1].style.display = 'block';
+        paperPargh[imgNum-1].style.display = 'block';
+        
+    }
+   
+    //滚动条在Y轴上的滚动距离
+    function getScrollTop(){
+    　　var scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0;
+    　　if(document.body){
+    　　　　bodyScrollTop = document.body.scrollTop;
+    　　}
+    　　if(document.documentElement){
+    　　　　documentScrollTop = document.documentElement.scrollTop;
+    　　}
+    　　scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
+    　　return scrollTop;
+    }
+
+    //文档的总高度
+    function getScrollHeight(){
+    　　var scrollHeight = 0, bodyScrollHeight = 0, documentScrollHeight = 0;
+    　　if(document.body){
+    　　　　bodyScrollHeight = document.body.scrollHeight;
+    　　}
+    　　if(document.documentElement){
+    　　　　documentScrollHeight = document.documentElement.scrollHeight;
+    　　}
+    　　scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
+    　　return scrollHeight;
+    }
+
+    //浏览器视口的高度
+    function getWindowHeight(){
+    　　var windowHeight = 0;
+    　　if(document.compatMode == "CSS1Compat"){
+    　　　　windowHeight = document.documentElement.clientHeight;
+    　　}else{
+    　　　　windowHeight = document.body.clientHeight;
+    　　}
+    　　return windowHeight;
+    }
+    window.onscroll = function (event) {
+        let index = document.getElementsByClassName("index")[0];
+        let header = document.getElementsByClassName("header")[0];
+        let content = document.getElementsByClassName("content")[0];
+        let indexDisply = getStyle(index,'display');
+        let headerDisply = getStyle(header,'display');
+        let contentDisply = getStyle(content,'display');
+        if(indexDisply == 'block' && headerDisply == 'none' && contentDisply == 'none'){
+            if(getScrollTop() + getWindowHeight() + 2 >= getScrollHeight()){
+                index.style.display = 'none';
+                header.style.display = 'block';
+                content.style.display = 'none';
+            　　initScrollTop();
+　　        }             
+        }else if(indexDisply == 'none' && headerDisply == 'block' && contentDisply == 'none'){
+            if(getScrollTop() + getWindowHeight() + 2 >= getScrollHeight()){
+                index.style.display = 'none';
+                header.style.display = 'none';
+                content.style.display = 'block';
+            　　initScrollTop();
+　　        } else if(getScrollTop() == 0){
+                index.style.display = 'block';
+                header.style.display = 'none';
+                content.style.display = 'none';
+            　　initScrollTop();
+            }
+        }else if(indexDisply == 'none' && headerDisply == 'none' && contentDisply == 'block') {
+            if(getScrollTop() == 0){
+                index.style.display = 'none';
+                header.style.display = 'block';
+                content.style.display = 'none';
+            　　initScrollTop();
+            }    
+        }
+    }; 
+    window.addEventListener('wheel', function (event) {
+        let index = document.getElementsByClassName("index")[0];
+        let header = document.getElementsByClassName("header")[0];
+        let content = document.getElementsByClassName("content")[0];
+        let indexDisply = getStyle(index,'display');
+        let headerDisply = getStyle(header,'display');
+        let contentDisply = getStyle(content,'display');
+        if(indexDisply == 'block' && headerDisply == 'none' && contentDisply == 'none'){
+            if(event.wheelDelta<0){//向下滚动
+                if(getScrollTop() + getWindowHeight() + 2 >= getScrollHeight()){
+                    index.style.display = 'none';
+                    header.style.display = 'block';
+                    content.style.display = 'none';
+                　　initScrollTop();
+　　            }             
+            }
+        }else if(indexDisply == 'none' && headerDisply == 'block' && contentDisply == 'none'){
+            if(event.wheelDelta<0){//向下滚动
+                if(getScrollTop() + getWindowHeight() + 2 >= getScrollHeight()){
+                    index.style.display = 'none';
+                    header.style.display = 'none';
+                    content.style.display = 'block';
+                　　initScrollTop();
+　　            }  
+            }
+            if(event.wheelDelta>0){//向上滚动
+                if(getScrollTop() == 0){
+                    index.style.display = 'block';
+                    header.style.display = 'none';
+                    content.style.display = 'none';
+                　　initScrollTop();
+                }
+            }
+        }else{
+            if(event.wheelDelta>0){//向上滚动
+                if(getScrollTop() == 0){
+                    index.style.display = 'none';
+                    header.style.display = 'block';
+                    content.style.display = 'none';
+                    initScrollTop();
+                }    
+            }
+        }
+    });
+
+    function initScrollTop(){
+        
+        window.scroll({ top: 10, left: 0, behavior: 'smooth' });
+        // window.scrollTo(10,0);
+        // console.log(getScrollTop())
+    }
+</script>
+<body>
+  <div class="index" style="display: block;">
+    <div class="number">
+      <img src="image/open.gif" style="width:100%" alt="">
+    </div>
+  </div>
+  <div class="header" style="display: none;">
+    <div class="header_content">
+      <p>我们根据发帖数量、吧龄和信息完整度，</p>
+      <p>从“失独吧”和“失独者论坛”中整理了三十个失独家庭的故事，</p>
+      <p>每一朵花代表着一个离开的孩子，</p>
+      <p>信笺上寄托着父母最想和孩子言说的心里话</p>
+    </div>
+    <h3 class="header_title">点击花朵 听听他们的故事</h3>
+    <div class="flower">
+      <div class="imgContent">
+        <img src="image/paper.png" id='paper'>
+        <div class="paperContent">
+          <p class="paperTitle" id='paperTitle1'>@天**瞥</p>
+          <p class="paperTitle" id="paperTitle2">@U**岁</p>
+          <p class="paperTitle" id="paperTitle3">@uu**kk</p>
+          <p class="paperTitle" id="paperTitle4">@给你**19</p>
+          <p class="paperTitle" id="paperTitle5">@ha**08</p>
+          <p class="paperTitle" id="paperTitle6">@期待**飞鱼</p>
+          <p class="paperTitle" id="paperTitle7">@一米**阳光</p>
+          <p class="paperTitle" id="paperTitle8">@心人**独罪</p>
+          <p class="paperTitle" id="paperTitle9">@六**1</p>
+          <p class="paperTitle" id="paperTitle10">@悔药**55</p>
+          <p class="paperTitle" id="paperTitle11">@玲**透</p>
+          <p class="paperTitle" id="paperTitle12">@芳</p>
+          <p class="paperTitle" id="paperTitle13">@pu**08</p>
+          <p class="paperTitle" id="paperTitle14">@无**痛</p>
+          <p class="paperTitle" id="paperTitle15">@很**宝</p>
+          <p class="paperTitle" id="paperTitle16">@香**I</p>
+          <p class="paperTitle" id="paperTitle17">@我**8</p>
+          <p class="paperTitle" id="paperTitle18">@繁**盡-</p>
+          <p class="paperTitle" id="paperTitle19">@天*8</p>
+          <p class="paperTitle" id="paperTitle20">@想念**昕昕</p>
+          <p class="paperTitle" id="paperTitle21">@贴吧**5A</p>
+          <p class="paperTitle" id="paperTitle22">@zy**21</p>
+          <p class="paperTitle" id="paperTitle23">@雪莲**bb</p>
+          <p class="paperTitle" id="paperTitle24">@漂**子</p>
+          <p class="paperTitle" id="paperTitle25">@be**ce</p>
+          <p class="paperTitle" id="paperTitle26">@万**伊</p>
+          <p class="paperTitle" id="paperTitle27">@小**闹</p>
+          <p class="paperTitle" id="paperTitle28">@贴吧**SU</p>
+          <p class="paperTitle" id="paperTitle29">@决不**宝贝</p>
+          <p class="paperTitle" id="paperTitle30">@红**家</p>
+          <p class="paperChildName" id='paperChildName1'>女儿茜茜，21岁</p>
+          <p class="paperChildName" id="paperChildName2">儿子谭卓，21岁</p>
+          <p class="paperChildName" id="paperChildName3">女儿文杰，6岁</p>
+          <p class="paperChildName" id="paperChildName4">女儿妍妍</p>
+          <p class="paperChildName" id="paperChildName5">儿子梓翔，20岁</p>
+          <p class="paperChildName" id="paperChildName6">儿子兰天野，21岁</p>
+          <p class="paperChildName" id="paperChildName7">儿子甘瑞，39岁</p>
+          <p class="paperChildName" id="paperChildName8">儿子杨洋，18岁</p>
+          <p class="paperChildName" id="paperChildName9">女儿艺儿，21岁</p>
+          <p class="paperChildName" id="paperChildName10">女儿静静，24岁</p>
+          <p class="paperChildName" id="paperChildName11">女儿晨靖，4岁</p>
+          <p class="paperChildName" id="paperChildName12">儿子晓宁，2天</p>
+          <p class="paperChildName" id="paperChildName13">女儿布丁，3个月</p>
+          <p class="paperChildName" id="paperChildName14">儿子童童，8岁</p>
+          <p class="paperChildName" id="paperChildName15">儿子小宝，9岁</p>
+          <p class="paperChildName" id="paperChildName16">儿子川川，4岁</p>
+          <p class="paperChildName" id="paperChildName17">儿子硕宝，7岁</p>
+          <p class="paperChildName" id="paperChildName18">儿子胡皓轩，3岁</p>
+          <p class="paperChildName" id="paperChildName19">女儿雅丽，27岁</p>
+          <p class="paperChildName" id="paperChildName20">女儿刘昕怡，19岁</p>
+          <p class="paperChildName" id="paperChildName21">儿子盼盼，26岁</p>
+          <p class="paperChildName" id="paperChildName22">儿子颜儿，26岁</p>
+          <p class="paperChildName" id="paperChildName23">儿子，31岁</p>
+          <p class="paperChildName" id="paperChildName24">儿子洋洋，10岁</p>
+          <p class="paperChildName" id="paperChildName25">儿子，21岁</p>
+          <p class="paperChildName" id="paperChildName26">儿子鑫鑫，6岁</p>
+          <p class="paperChildName" id="paperChildName27">女儿，10个</p>
+          <p class="paperChildName" id="paperChildName28">女儿茜茜，17岁</p>
+          <p class="paperChildName" id="paperChildName29">儿子，28岁</p>
+          <p class="paperChildName" id="paperChildName30">儿子，22岁</p>
+          <p class="paperTime" id='paperTime1'>2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime2">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime3">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime4">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime5">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime6">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime7">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime8">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime9">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime10">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime11">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime12">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime13">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime14">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime15">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime16">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime17">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime18">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime19">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime20">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime21">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime22">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime23">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime24">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime25">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime26">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime27">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime28">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime29">2020/01/01 00:00:00</p>
+          <p class="paperTime" id="paperTime30">2020/01/01 00:00:00</p>
+          <p class="paperPargh" id='paperPargh1'>乖乖，没给你做第三次手术，是妈妈这辈子无法弥补的遗憾。乖乖，今天街道打电话人口普查，询问你的情况，妈妈哽咽了没敢回答，推给你爸爸了。乖乖，妈妈想你了，你在那边过得还好吗？昨晚你没有来妈妈的梦里，能来看看妈妈吗？从你离开的那一天起，你一刻也没有从妈妈的身边离去，你已经扎根在妈妈的灵魂深处。愿我的女儿在天堂没有病痛，还能找到回家的路。</p>
+          <p class="paperPargh" id="paperPargh2">谭卓是我们的独生子，他在2011年离春节还有8天的时候遭抢劫最后导致非正常死亡。失独家庭是这个时代一个悲伤的符号，这群人大多出生在上世纪五、六十年代，经历过文化大革命，上山下乡，改革开放，计划生育这些中国所特有的发展阶段。正因为他们已经老去，他们的声音他们的诉求渐渐地微弱，因此，我要尽我所能地向社会呐喊，希望我的不幸能唤起全社会的关注并从政策上杜绝此类不幸的发生，希望社会关注他们的生活。</p>
+          <p class="paperPargh" id="paperPargh3">我的心肝宝贝女儿，于2012年10月10日11点55分钟在学校门口出了车祸，去了天堂。文杰我的好女儿呀，爸妈想你了，爸妈祝福你在天堂过得快乐！我哭呀哭、哭呀哭，有谁能为我的女儿讨个说法？有谁能为我的宝贝女儿负责？我只是个小学没有毕业的农民，什么都不懂，只有哭呀哭啊！</p>
+          <p class="paperPargh" id="paperPargh4">我是个年轻的父亲，曾几何时我很幸福，但一场大病夺去了我年幼女儿的生命。虽然我还年轻，未来或许还能再生育。但我还是很想她，没有什么能代替她在我心中的位置。妍妍，爸爸爱你，一辈子爱你！</p>
+          <p class="paperPargh" id="paperPargh5">2012年3月24日，对于我们家是个黑暗的日子，我可爱的儿子梓翔在大二这样美好的花季，无声无息地离我们而去。没有一点点心里准备，你的生命就这样嘎然而止。儿子，失去你，我们失去了生活的希望，失去了生命的传承，我们老无所养，我们生不如死。三月三我会依然到你的坟上献一束花、烧点纸币，随着我们的老去，这样的机会会越来越少，也许有一天我们两个都走了，就不会再有人祭奠你。你在天堂安好，做个坚强的汉子，做个堂堂正正的人，我们永远爱你。</p>
+          <p class="paperPargh" id="paperPargh6">生于1993年，卒于2014年，爱儿兰天野匆匆走过了他短暂的一生。爱儿走得安详平静，犹如天使睡着了一样，没有丝毫的痛苦和牵挂。虽然悲痛万分，但是不敢忘记爱儿的一言一行所嘱托之事，我让自己坚强，我让自己微笑，我让自己走出来。想着你幼时的天真，想着你孩童时的调皮，想着你无邪的笑容，想着你细心的体贴，你就仍在我身边，爱没有远离，你依然在。</p>
+          <p class="paperPargh" id="paperPargh7">我的宝贝儿子啊！你遭空难走了整整两年了，昨天去看你，你还是那么阳光帅气，甜甜地微笑着，你在天上过得好吗？送来那么多你喜欢吃的东西，吃了吗？妈妈想你疼你呀！自从你出事后，妈妈把自己封闭起来了，所有亲戚朋友都找不到我，我不想见人、不想说话，整天躲在阴暗角落里哭啊哭。后来找到失独吧，这里让我看到同命相怜的许多人，我们有共同语言，我们抱团取暖，互相安慰也能听得进去一点，这就是我天天来这里看一看、写点东西的原因。</p>
+          <p class="paperPargh" id="paperPargh8">丧子的痛苦在这五年里无休止地折磨着我，我的洋洋儿子要是活着今年也该读大四了。我的心里常年积压着无尽的痛苦，没有适合的平台倾诉，只能把苦水往肚子里咽。最近身体也不好了，默默地吃着苦药，装作若无其事地度过每一个不开心的日子。尤其最怕过年，家里的寂静，未来的空虚，和此时的无奈无助，都使我地身体急剧衰退，只能靠每天三顿药支撑着。当我痛苦的时候我就想到了和我一样坎坷的难友们，所以我来到这里，想在我不确定生命长短的日子里，为需要帮助的人做点什么，否则今生真就一无所事了！</p>
+          <p class="paperPargh" id="paperPargh9">这里是妈妈对你倾诉的一个角落，我可以毫无顾忌地大声喊：我的宝贝，妈妈真的好想你！我在这里不需要伪装，你离我真的越来越远了。每次睡不着的时候，就会想起你蹦着一条腿来到我的房间，咚，咚，咚！如今那沉重的响声我再也听不到了，我可怜的宝贝啊。我一直不相信女儿走了，总觉得有一天她还会回来的，我就当孩子出国了吧，把她藏在心底。</p>
+          <p class="paperPargh" id="paperPargh10">静静，我的乖女儿！你来到这个世界虽然只有短暂的24个春秋，却曾给妈妈的生活带来了无限的快乐、幸福和希望。可一切在2014年酷暑的那一天戛然而止，毫无征兆地，你选择静静地离开世界，妈妈从此再也听不到你的呼唤。女儿，你知道吗？妈妈想你，时时刻刻都在想你，可我却永远无法告诉你了。每个白天我都装作忙忙碌碌，是不想让自己心痛得那么厉害，是不想让自己心碎得更加忧虑，可我无法控制自己的情绪，无法支配大脑不去想你。从酷暑到寒冬，从皑皑白雪到春意盎然，在熟悉的留着你气味的环境里，在每个孤独的深夜里，我总是情不自禁地想起你，乖巧懂事的我的闺女啊！</p>
+          <p class="paperPargh" id="paperPargh11">我每日活在对孩子照顾不周的悔恨之中，每夜做噩梦。孩子活泼的声音犹在耳边，仿佛不曾离去。我曾经也想去陪女儿，可是每当我看到我年迈的母亲望着我时心痛的眼神，我就觉得要坚强地活下去！可爱的晨靖宝贝，妈妈现在唯一的愿望，就是你能出生在一个好家庭，全家人都疼你，爱你！</p>
+          <p class="paperPargh" id="paperPargh12">晓宁啊，妈妈彻夜不眠的想你。可怜我小小的宝贝，孤身上路，可会害怕？黄泉路上，可会凄凉？奈何桥边，可曾回望？你喝了孟婆汤，投胎再回来可好？记得啊宝贝，不要再带着绝症来了，爸爸妈妈都很心疼你的。妈妈太老了，不一定能生你了，投胎好人家也行。有困难记得给妈妈托梦啊，千山万水也会去帮你，我们永远爱你！</p>
+          <p class="paperPargh" id="paperPargh13">这世上，绝大部分人是不需要承受失去孩子的痛苦的，而我是那一小部分。布丁出生六天检查出复杂先天性心脏病，医生建议三个月做手术，两个月二十六天我们来到医院准备手术，预计手术的前一天布丁发烧，继而很快转成重度肺炎。从12月11号进入重症监护室，到1月7号布丁离开，我再也没有抱过她。1月6号布丁做了心脏手术，手术很成功，我特别开心到处打电话通知亲友。可没有想到7号凌晨两点医生打电话说布丁已经抢救两次了，血压低到二三十，用了比别人十倍多的药。中午十二点又一次接到医生电话，布丁血压测不出来了，开胸抢救很久，心脏还是没有恢复跳动，12:42布丁永远离开了。她再也不用承受那么大的痛苦了，不用每天输液无数，无法凝血导致每个针眼都流血，为了检查每天都要抽好多血，还有病痛的折磨。我的小小的、懂事的、可怜的布丁，你再也不用痛苦了，真好啊。</p>
+          <p class="paperPargh" id="paperPargh14">因为是深夜不敢哭出声音，我擦干泪闭上眼睛，好想再回到梦里啊，刚才被泪冲散的梦，依然那么真实地浮现在脑海里。我抱着他从屋里走到院外，看见了一条荒芜得小路通往他曾在读的小学校，路边有几个下水井还好好地盖着井盖，我告诉他“你不要搬开，会掉下去的”。梦回不去了，就像去世的孩童是无法抱住的，只给母亲留下了空荡的回忆！我努力使这夜晚重回寂静，只能数着钟表的声音。这种伤痛就让我一个人承受吧，求求谁？请不要再让天下第二个母亲体会到这种失子的长痛，愿天下所有的母亲都能长长久久地享受着有孩子伴随的天伦之乐吧！</p>
+          <p class="paperPargh" id="paperPargh15">孩子，你离开我们12天了，这12天妈妈感觉像12年一样那么的漫长，你才9岁为何就要离开妈妈？我没有照顾好你，让你这么小就被病魔缠身。你常说，有钱又怎么样？钱又不是万能的。是啊！钱真的不是万能的，妈妈拿钱没有救活你，反而让你承受痛苦。妈妈好无能啊！妈妈真的好想你，每天都会不停地看你的照片，想你跟我们生活的点点滴滴，我不知道我能撑多久！孩子，你在那边好不好？可以托梦给我吗？妈妈想你啊！</p>
+          <p class="paperPargh" id="paperPargh16">宝贝，妈妈想你了。没有你的日子，太难太难了。妈妈不知道还能坚持多久，真的好累。妈妈就想陪着你，可是你不在了。你带走了妈妈的希望，没有你生活该如何下去啊。好希望有灵魂，你可以快乐健康地在另一个宇宙生活。儿子，妈妈多么希望可以用自己的命来换回你的命。儿子，我们拉过勾，要一辈子做母子的。儿子，要等着妈妈，我永远爱你。</p>
+          <p class="paperPargh" id="paperPargh17">人生好像失去了方向，每天不管做什么都好像胸口压着一块大石头……我知道那我在压抑自己不去想他！看看孩子的照片和视频，回忆和他在一起的幸福就会受不了，然后大哭一场。他曾经是我的小尾巴，去哪都跟着，小区里到处都是满满的回忆。白天我甚至不敢出门，晚上自己走在熟悉的小路上会假装他还在身边，“慢点跑”、“靠边当心车”、“小心台阶”……说这些时有一丝幸福感。我的心被狠狠地撕了一块肉，伤疤可能永远都好不了了！不想见亲人朋友，不想她们安慰我，那些安慰的话只会让我更难受。也许，我们这群人才能真正理解这种痛吧。</p>
+          <p class="paperPargh" id="paperPargh18">世事难料，爸爸此刻都不敢相信生于2013年9月16号的你会于2016年1月23号在家里遭遇到任何人都始料未及的意外，对于我们家来说那是一场毁灭性、摧毁性的灾难。宝贝，爸爸真的真的接受不了，爸爸心中背负了太多太多的思念和痛恨了，思念你曾经喜怒哀乐时的不同表情，思念我们父子俩之间有过的对白，痛恨促使夺去你生命的意外发生的各种起到推波助澜作用的人或事物，痛恨自己为什么不能提前2分钟知道你奶奶让你独自一人在烘了那么多易燃衣物的火炉旁吃饭……世间最凄楚、生命中最难以接受的事情莫过于儿女离世，这是生命中最不可承受之重。愿世间从此再无父母在有生之年要承受丧失儿女之痛了。这种永远如影随行、永远无法释怀的痛对活着的人和死去的人都太残忍了。恨天无眼，命无情。儿子，愿你如今在那边一切安好。</p>
+          <p class="paperPargh" id="paperPargh19">我最亲爱的唯一的宝贝女儿，因突发脑溢血，于2016年4月5日中午12点05分永远停止了呼吸，她仅仅27岁。从此我再也见不到天性纯真活泼可爱的宝贝女儿了，再也听不到有人叫我爸爸的声音了，今后生病时再也感受不到她日夜守护在床边，不时地抚摸我脸颊的父女连心的亲情了。亲爱的女儿，爸爸又住院了，看到别的病号有儿有女守侯在旁，爸爸内心痛不欲生。我控制不住地想你，又不敢哭岀声，捂住被子独自流泪……在我的生命里失去你，爸爸真的是好痛好痛啊。女儿啊，请告爸爸一声，你在天堂快乐吗？宝啊，请等着日夜思念你的老爸吧！</p>
+          <p class="paperPargh" id="paperPargh20">女儿9月8号旅游意外离开了我，11月19日是她生日，这几个月没有哪天不想她的。担心她不够钱买喜欢的东西，往她的支付宝和微信像以前一样按时给她打零花钱。无论走到哪都能想到她的事情，一个人走在路上，独自开车就会嚎啕大哭，没法顾及路人的眼光。微信里几年的聊天记录都在，每天给她微信和QQ留言，可是她从来没回我。一切都历历在目，没人能够体会失去女儿的痛苦，不知道多久才能不这么悲伤。我感觉仿佛她还在我身边，感觉女儿只是去了很远的地方学习工作，总有一天会回家的。昕昕啊，爸爸天天想你，有空回来看看我们，你走后爷爷奶奶越来越老了，我们都爱你。</p>
+          <p class="paperPargh" id="paperPargh21">儿子，妈的宝贝，你还好吧，每当天空飘起细雨，妈就特别的想你，妈的心情就特别抑郁，更加难受。宝贝，你在那边还好吗？妈妈在这边过得不好，不开心，没有干劲，没有希望，不知为什么而活，只能说妈妈现在还活着而己。天气一天天凉了，宝贝记着加衣服，多休息，是妈妈没本事，没给你提供更好的生活，没本事留住你，都是妈妈的错，你在那边好好生活等着妈妈。明天是母亲节，这是你离开妈妈后第一个母亲节，一个没有你祝福的母亲节，以后妈妈就不是一个母亲了，这个称谓以后跟妈妈无关了。儿子，妈妈的宝贝，妈妈永远爱你，你永远活在妈妈的心里！</p>
+          <p class="paperPargh" id="paperPargh22">2015年5月21日18时，我唯一的儿子从此与我阴阳两隔。我全世界找儿子，我向高山喊，我向大海喊，儿子，你在哪里？快回来、快回来，妈妈在家等你。儿子一天天从我生活中远去了，我拼命抓住儿子尚存的一点一滴，如果还能帮儿子做点什么，上刀山下火海，或者要我的命我都愿意。一年了，我的儿子，你一个人在外面还好吗？我们一起度过了我生命里最幸福的26年，因为有你，妈妈的生命坚韧不拔，光彩夺目。那是一个洒满金色阳光的世界，儿子温尔文雅的笑脸，儿子叫着妈妈妈妈的声音是那么甜美，谈起儿子总是那么自豪幸福，这是人间天堂。儿子，妈妈感谢你，26年的相依为命，你使我成为了最幸福、最骄傲、最勇敢的妈妈。远去的儿子，妈妈的心永远是你的家，妈妈的生活需要儿子的参与。儿子，记住，常回家看看。生活中的母子之情是短暂的，心里中的母子情长长久久！</p>
+          <p class="paperPargh" id="paperPargh23">我的儿子，我的希望，他是一名非常优秀的电气工程师。疾病夺走了他年轻的生命，人生路上才走了31年，孩子还没有结婚，什么都没有留下，只留下我对他的思念。没有他的日子，我不知道该怎么过。但是，我们还是要好好地生活，做一个快乐幸福的人，这也是我们孩子的希望啊，要让逝者放心。</p>
+          <p class="paperPargh" id="paperPargh24">一辈子都会想念我们孩子的，放下，不等于忘记。他哗啦啦开门的声音是世上最动听的音乐，他大口吃饭的样子是世上最绝美的画面，他留下的每一瞬间都是不能衡量的珍贵！怎舍得，怎舍得用眼泪和哀伤去回忆……振作起来！孩子不愿看到我就此颓废。孩子走后我也抑郁了，前两年一直看心理医生，才感觉好多了。我一直尝试自救，大多时间在外旅游散心。我愿意早日走出来，正常生活，再发挥余力帮助更多需要温暖的人，让生命有意义。</p>
+          <p class="paperPargh" id="paperPargh25">儿子，你离开我们好久了，我们越来越想你。妈妈没有留住你，妈妈对不住你。我们现在的痛苦，是否可以换来你想要的美好生活呢？不用再学习，不用再忧虑未来，不再有压力和折磨。你解脱了。但你可曾对我们有过一分不舍，有过一丝留恋？我们是爱你的，我们所有的一切都捧给你了，可是被你全都放下了。你就这样笑着走了，舍弃了我们给你的，也舍弃了你自己，让我们再也找不到你，看不到你了。孩子是妈妈在这个世界存在过的唯一证明，现在一切都成空了，不知道人生的意义到底是什么。如果去找你，我们能否再见面呢？</p>
+          <p class="paperPargh" id="paperPargh26">6岁的儿子在寒假考完试的第一天，被奶奶带回老家。奶奶怕两个孙子冷，把她觉得烧过了的两盆煤炭火搬进奶孙仨的卧室里，第二天早上被他二叔发现的时候，儿子和他奶奶都永远的离开了我们，只有二叔家的小妹妹被抢救过来了。无论我有多痛，我家小鑫鑫都永远离开了我，我现在唯一能做的，就是呼吁全天下的父母，重视安全隐患，关爱自己的儿女，一分一秒都不能忽视，我没有读多少书，写不出多好的文字，只希望能呼吁更多的老人认知到这些危险。</p>
+          <p class="paperPargh" id="paperPargh27">宝贝，你走了快一年了，不知道那边冷不冷，妈妈给你带的衣服够不够穿？妈妈每天都有梦见你来到妈妈床边，要妈妈抱抱，昨晚你又来了，你才十个多月，竟然会走路了，边走边叫妈妈，我的宝宝太棒了，大家都很喜欢你。妈妈到现在都没有办法接受，你是那么可爱健康，从出生起都没有生过病，怎么这么小小的意外竟会让我们母女阴阳相隔呢？妈妈好后悔没有时刻在你身边，就离开那一会儿，让奶奶看都没给你看好，你就吐奶窒息而去了。可怜的孩子啊，妈妈真的舍不得你，妈妈好想你！</p>
+          <p class="paperPargh" id="paperPargh28">茜茜宝贝，今天你离开我们已经整整两年了，曾经你的来到带给我们多少快乐的日子，可如今留给我们的却是无尽的思念与悲痛，从小到大你都是那么的乖巧，没有让我们操一点心，读书考试你是最棒的，一直都是我们的骄傲，一直都是人们所说的“别人家的孩子”，可是现在却让我们伤碎了心，好想你啊宝贝！你知道吗崽崽，想你想疯了呀！</p>
+          <p class="paperPargh" id="paperPargh29">亲爱的儿子，一六年的今天，你对自己说一定要活下去。知道你是放不下父母。为了我们你忍受着二十多次化疗，五年的治疗里伤痕累累。知道你是个坚强内敛的孩子，曾经拥有你是爸妈的骄傲。对不起，没照顾好你，把你丢了。今天是儿子的生日，尽管苏州暴雨如注，依然在茫茫的太湖边上奔驰，去公墓陪儿子过生日。泪水和着雨水打在脸上，不知还能陪儿子过多少个生日，不知道还能为孩子擦多少次墓牌，不知道将来开不动车子、跑不到山上、看不了儿子怎么办？所以一定得好好锻炼，活久点多看看孩子。</p>
+          <p class="paperPargh" id="paperPargh30">孩子走时22岁，为了替孩子活够剩下的岁月，我们又失魂落魄地活了三十年，如今我78岁、老伴85岁了。清明时节，我们跋山涉水二千多公里，一路乘地铁、高铁，8小时后到了长沙，再乘车3小时到益阳，为儿子扫墓。虽然山高路远，以前我还可以到墓前去，更亲近我儿，这次却不成了，那山我爬不上去了，浑身打颤，喘不上气，家人拥着几次也上不去了。我默黙地对儿子说：妈老了！原谅妈妈！妈就在山下为儿祈祷：天堂安息！那几天湖南强降雨，路上山体滑坡，感谢上帝，我们一切顺利！老伴比我强壮，他能走山路代我墓前奠扫儿子。可怜天下父母心，八旬老人祭祀亡子，是多么迫切！真切！又困难啊！</p>
+        </div>
+        <img src="image/flower1.png" id='img1' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower3.png" id='img2' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower3.png" id='img3' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower1.png" id='img4' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower1.png" id='img5' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower1.png" id='img6' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower3.png" id='img7' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower2.png" id='img8' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower2.png" id='img9' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower2.png" id='img10' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower3.png" id='img11' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower3.png" id='img12' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower3.png" id='img13' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower1.png" id='img14' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower1.png" id='img15' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower1.png" id='img16' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower1.png" id='img17' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower3.png" id='img18' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower3.png" id='img19' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower1.png" id='img20' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower2.png" id='img21' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower2.png" id='img22' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower2.png" id='img23' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower2.png" id='img24' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower2.png" id='img25' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower3.png" id='img26' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower1.png" id='img27' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower2.png" id='img28' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower2.png" id='img29' class="imgFlower" onclick="clickFlower(this)">
+        <img src="image/flower3.png" id='img30' class="imgFlower" onclick="clickFlower(this)">
+      </div>
+    </div>
+  </div>
+  <div class="content" style="display: none;">
+    <h4 style="margin-top: 5%;">谁在说？</h4>
+    <p>20世纪70年代起开始推行的计划生育政策，在一定程度上缓解了我国的人口压力，却也不可避免地催生了“失独家庭”这一特殊群体的出现。“失独家庭”指独生子女死亡，其父母不再生育、不能再生育和不愿意收养子女的家庭。失独家庭群体规模的日趋庞大、失独父母无处安放的晚年，以及“丧子之痛”给失独父母造成的巨大心灵伤害，正在使失独家庭成为日益严峻的社会问题。</p>
+    <p>根据社科院人口所在2013年发布的研究结果，2010年，累计独生子女死亡即失独家庭达到100.3万户。在该年，全国新增死亡17.29万独生子女，在彼时的计划生育政策国情下，未来数十年内，这一增速将持续加快。到2030年，死亡独生子女人数增速将达27.7万人/年，2040年则增至38万人/年。依此趋势，预计到2050年，失独家庭总计将达1200万。人口学专家、《大国空巢》作者易富贤也曾推断，根据全国第六次人口普查数据，2010年我国已有的2.18亿独生子女中，会有1009万人在25岁之前离世，这同样意味着不久之后的中国，将有至少1000万家庭成为失独家庭。</p>
+    <br>
+    <img src="image/chart1.png" alt="">
+    <span>中国独生子女死亡人数预测（数据来源：中国社会科学院《独生子女死亡总量及变化趋势研究》，2013）</span>
+    <span>*2015年及之后的数据为社科院于2013年基于计划生育政策在预测期内不会发生改变的假设做出的预测值，2015年二孩政策的开放可能使预测数据产生偏差</span>
+    <br>
+    <p>日趋庞大数字的背后，是一个个本该和美的家庭。为了进一步看清——他们是谁？他们经历了怎样的痛心和酸楚？他们现状又是如何？由于“失独”话题具有一定特殊性，因此为了尽可能减少对失独父母造成二次伤害，我们选择了社交网络上的已有数据作为主要的数据来源，并辅以一定的采访素材，以期让更多人听见失独者所说。</p>
+    <p>我们首先关注到的是一个名为“失独者之家”的论坛。“失独者之家” （http://www.sdzzj.net/）是我国最早的为全国失独群体、失独家庭、失独老人和志愿者公益团体提供抱团取暖情感交流的公益网站。然而，出于对失独用户隐私的保护，站内部分涉及关键信息的帖子对非注册用户不可见，因此，我们只获取到其中部分公开数据。</p>
+    <p>随后，我们注意到，百度贴吧和微博两个平台均有一定数量的失独网友在发表失独相关内容。最终，我们爬取了百度贴吧“失独吧”以及“失独者之家”论坛中的21863条相关数据，经过清洗和去重后得到1351位失独父母的基本情况，呈现如下。</p>
+    <br>
+   	<iframe src='https://flo.uri.sh/visualisation/4651391/embed' title='Interactive or visual content' frameborder='0' scrolling='no' style='width:70%;height:600px;margin-left:15%'></iframe><div style='width:100%!;margin-top:4px!important;text-align:right!important;'></div>
+    <span>贴吧和论坛中失独父母的基本信息统计（数据来源：百度失独吧&失独者之家）</span>
+    <span> *数据已排除重复以及难以判断真实情况的用户</span>
+    <br>
+    <p>通过互动和点击，我们可以看到，社交网络上失独父母的年龄大都分布于45-55岁之间，已基本丧失二次生育能力；母亲的数据数量远多于父亲，说明母亲似乎更容易在社交网络上表达自己的哀思；去世子女的年纪大多停留在15-25岁，正值青春少年时。</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h4>在说什么？</h4>
+    <p>“非至痛者无以言”，在失去独生子女之后，父母们有哪些情感表达？本文对抓取所得的两万余条数据进行了语义网络分析和词频分析，希望了解失独父母这一群体在网络上的表达内容。</p>
+    <p style="font-weight: bold;text-indent:0;">写往天堂的信：失独痛之深</p>
+    <p>首先，本文对数据进行了语义分析，根据语义的词频、相关联程度数据建立了失独家庭的语义网络，聆听失独者在倾诉什么。</p>
+    <br>
+    <iframe src='https://flo.uri.sh/visualisation/4651433/embed' title='Interactive or visual content' frameborder='0' scrolling='no' style='width:70%;height:600px;margin-left:15%'></iframe><div style='width:100%!;margin-top:4px!important;text-align:right!important;'></div>
+    <span>失独相关帖文语义网络图（数据来源：百度贴吧&失独者之家）</span>
+    <span> *图中圆圈大小代表各语义词的词频，线条粗细代表语义次之间的关系强弱</span>
+    <br>
+    <p>失独帖的语义网络以“孩子”为核心，“儿子”、“女儿”、“妈妈”、“父母”为次级核心，在所有的语义关系中，“孩子-妈妈”、“孩子-父母”、“儿子-妈妈”等关联程度最强。他们与周围“失去、离开、痛苦、思念、唯一”等表达孩子逝去、父母心理情感的关键词，共同构成失独帖的基本语义：表达父母失去独生子的痛苦之情。</p>
+    <br>
+    <img src="image/chart2.png" alt="">
+    <span>以关键词“孩子”为核心的语义网络图（数据来源：百度贴吧&失独者之家）</span>
+    <br>
+    <p>失独者在贴吧、论坛中的表达与诉说，离不开这样的基本语义，他们往往不会也不愿回忆失去孩子的具体情形，而多在表达和发泄心中的痛苦思念之情。独生子女是父母的一切，承载着他们的希望，对他们而言失子无异于天塌，是摧心剖肝之痛。关爱失独家庭的公益组织“暖馨家园”负责人柏万青说：“失独家庭失去孩子的痛苦是刻骨铭心终生难忘的，悲痛的情绪长期伴随整个家庭，常人无法感同身受。”</p>
+    <br>
+    <img src="image/chart3.png" alt="" style="width: 30%;margin-left: 35%;">
+    <span>以关键词“天堂”为核心的语义网络图（数据来源：百度贴吧&失独者之家）</span>
+    <br>
+    <p>此外，“天堂”作为一个较为特殊的词语连接着孩子与父母之间的基本语义，在本文爬取的数据中，有超过40%的帖子以第二人称“你”为诉说对象。“今天下雨了，天也不热了，你在天堂还好吧？你在天上好好的生活，好好等着妈妈跟你团聚！”（贴吧用户：0**A）这些文字就像父母写给远在“天堂”的孩子的一封信。失独家庭无法改变现实，也无处可以排解他们的悲痛。在极端无助的境遇下他们只能将哀思寄托于“天堂”、“来世”、“轮回”这样的信念中，一方面是试图与孩子产生象征性的微弱联系，另一方面也是聊胜于无的自我安慰。</p>
+    <p>不止是语义网络，本文还对所得数据中父亲和母亲发帖内容各自的高频用词做了统计分析，发现男性用户的第一高频词是“爸爸”，女性用户的第一高频词是“妈妈”。这与上文中所提到的失独父母使用第二人称来发帖，以此寄托对孩子的哀思是结论一致的。</p>
+    <br>
+    <img src="image/xintu1.png" alt="">
+    <span>女性（红色部分）/ 男性（蓝色部分）用户发帖内容词频图（数据来源：百度失独吧，选取高频用词TOP300）</span>
+    <br>
+    <p style="font-weight:bold;text-indent:0;">思念日日不断：失独痛之久</p>
+    <p>通过对具体帖文的解读，本文发现语义网中表达正面情绪的语义（“幸福、快乐、家庭”等）在具体语境中超过68%的表达是对孩子生前的怀恋。“儿子，你陪伴了妈妈23年，虽然你也有缺点，也有让妈妈不满意的地方，但是你带给我的更多的是快乐，妈妈非常满足我们一家三口平平淡淡的日子，我和你爸无数次谈论着你娶妻生子以后的生活……”（贴吧用户：千**爱）除抒发痛苦之情外，对往昔岁月的怀念、以及悔恨惋惜之情的表达也是失独者帖文中的一大主题，孩子生前的幸福生活与失子之痛在文字情感上形成了强烈的对比。</p>
+    <p>结合语义网络和词频分析可知，除了情绪相关的词语外，与程度、时间、频率相关的词语（“永远、每天、天天”等）同样频繁出现，且串联起了各个核心语义，出现在不同失独者的倾诉和表达中。“妈妈想你，时时刻刻都在想你，可我却永远无法告诉你。在留着你气味的环境里，我总是情不自禁地想起你……每晚，思念就会直袭我的心扉，我的心就被深深地刺痛……”这段话来自百度贴吧中的一位失独母亲，在她完整的895字叙述中，共出现了37个“每天”、“每晚”、“永远”、“总是”等与时间频率相关的表达。失独家庭的痛苦不仅是深刻沉重的，更是持续而缠绵的。在对公益组织的采访中本文也了解到，失独家庭在遭遇变故后往往会长时间地持续沉浸在痛苦与思念的情绪中，很难回归正常的生活。</p>
+    <p>与此同时，本文还留意到了贴吧中长时间高频发帖的典型案例。贴吧用户“天**瞥”是一位失去独生女儿的母亲，她从2019年11月13日开始在贴吧以“乖茜，妈妈想你了……”创立主题贴，一直更新到了本文收集数据的2020年11月29日。在这382天里，她有四分之三的日子都有发帖记录，总共发帖355条，57343字，即平均每日都会在贴吧里留下约200字的写给逝去爱女的纪念日记。</p>
+    <br>
+    <img src="image/chart4.jpg"style="width:90%;margin-left:5%;margin-right:5%" alt="">
+    <span>百度贴吧用户“天堂*瞥”382天内发帖字数热力图（数据来源：百度失独吧）</span>
+    <span> *统计截止时间为2020/11/29，后续该用户依然在持续发帖</span>
+    <br>
+    <p>在这些帖子里，这位母亲追忆了女儿被病魔折磨的详细过程，描述了每一次就诊、治疗、复发、手术等过程中母女二人的感受和心境的变化。通过她的讲述可以知道，在女儿因病去世之后，她虽强忍着痛苦、逼迫自己努力回归正常的生活和工作，却屡屡会触景、触物伤情，实际上哀思不减。通过以上热力图可知，随着时间的推移该母亲的发帖频率稍有下降、发帖字数也略有减少，但她依旧写道：“让我快点老去吧，意识迟钝了，就不需要一天天地承受那么多次撕心裂肺的疼了”，“都说时间是最好的良药，它能治好妈妈这苦涩的心吗？今天妈妈还是想你了”。这样的故事再一次说明了，失独之痛对父母造成的创伤是深重、漫长且难以由时间疗愈的。</p>
+    <p style="font-weight: bold;text-indent:0;">痛苦而坚强：失独者的矛盾自我</p>
+    <p>在整个语义网中，“坚强”和“痛苦”两种情感处于同一语境中，形成了相对的语义网络，他们同样连接着“妈妈”、“孩子”、“失去”等关键词。从具体语义中本文发现失独者矛盾的双面情绪，他们一方面沉浸与失去孩子的痛苦中，另一方面又为了给父母养老等责任而不得不坚强活下去。</p>
+    <br>
+    <img src="image/chart5.png" alt="">
+    <span>左图/右图：以关键词“坚强”为核心的语义网络图/以关键词“痛苦”为核心的语义网络图（数据来源：百度贴吧&失独者之家）</span>
+    <br>
+    <p>柏万青认为，失独家庭面临最大的困难并不是经济上的问题，心理上的问题才是关键。失独父母的心理往往是充满矛盾的，这种矛盾加剧了他们的痛苦，这些矛盾不仅表现在痛苦与坚强中，还有自卑感、老朽感、黄昏感、孤独感、被遗弃感、忧郁感等各种矛盾而负面的情绪。从柏万青的叙述里本文了解到，失独群体的这些情绪往往得不到适当的发泄，因此容易导致诸多消极行为的发生，也因此常常传递给周围人一种“难以接近”的感觉。</p>
+    <p>另外，从上文中的词频图可知，本文对失独群体贴吧、论坛上的男性和女性用户所发布的内容分别做了词频统计，希望以此了解父亲和母亲在情感表达上是否存在不同。本文发现，除了在“思念”、“痛苦”等高频词上存在共性以外，男性用户更多地使用了“坚强”、“面对”等词，而女性用户发布的内容里则更多地出现了“害怕”、“不敢”、“回来”等词。这反映了在一个失独家庭内部，父亲和母亲虽然承受同样的失独之痛，但在具体情感成分上存在一定的差异：母亲更多地表现出被痛苦所困、悲伤乃以自拔的状态，而父亲虽然也思念亡儿，却更多地表现出生活下去的信念和努力。</p>
+    <p>结合具体的文本内容可以看到，一些母亲会说“你走了，妈一个人很害怕，也很孤独，没有你的日子妈很难过下去。你知道吗？妈妈很胆小，也很懦弱，一点都不坚强。你是妈妈的男子汉，你走了，妈靠谁？”（贴吧用户：AB***夜色）；而一些父亲的留言则是“儿子我想求你一件事，你在极乐世界里好好的，别再让你妈失眠了，让她每天晚上睡4小时就行，她快要崩溃了，我今后怎么办？没有她我也不想在这个世界上活着了！放过她吧！”（贴吧用户：雪**3）。这些例子说明了两性的家庭分工和生理差异等因素，会导致失独父母有不同的情感诉求需要被关注。</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h4>谁在听？</h4>
+    <p>在百度贴吧里，我们一次又一次地看到“同命人，加我来聊聊”、“加入失独群，倾诉衷肠”这样的字眼，因为共同命运而联结起来的那群人有着属于他们的圈子，那是任何常人都无法轻易进入的地方。他们也渴望着抒发和安慰，海涛社工的陈煜颖说：“老人的诉求其实很简单，就是倾诉，你需要做的就是静静听他们和你说。”</p>
+    <p>社工是倾听老人们最多的人，每隔一周，海涛社工都会组织一个社区里的“长者”聚会，其中就不乏失独老人的身影。陈煜颖告诉我们，社工并不会单独组织“失独”群体的活动，他们希望消除老人们自己心理的阴影，让他们知道自己和别人没什么不同。社工们会在活动上带着他们一块聊聊家常、做做游戏，时间久了老人们也有了自己的社交圈。陈煜颖回忆说，老人们最期待的就是这一天了，因为每次活动的座位排布都一样，渐渐地他们就会习惯性地坐在一起，慢慢也就熟络了起来。</p>
+    <p>每次活动开始之前，社工们都会提早到场，有的老人晨练、买菜结束之后就会直接到活动现场来，见到陈煜颖都会热情的打招呼。“能被老人记住名字其实是最开心的，这说明他们开始接纳你了。”陈煜颖说。</p>
+    <p>“老有所养、老有所依”这样简单的愿望在他们的身上是十分奢侈的。陈煜颖所在的这个帮扶项目叫“力国半天孙”，寓意就是成为老人们半天的儿孙，让他们短暂地享有天伦之乐。“我们是没有办法一直陪伴老人的，我们能做的就是在活动的时候，以一个晚辈的身份，让他们感受到家的感觉。”陈煜颖说。老人们的晚年生活是单一又闭塞的，他们也很少接触智能手机，每天出门买菜、晨练时候和小区老人的零星照面成为了他们和这个世界接触最多的交流时刻。有一位刘奶奶，现在已经八十大几岁了，每次都是拄着拐杖来参与社区活动，老远见到陈煜颖，就会叫她的名字。陈煜颖说：“他们在家也没有人聊天，完全就跟老小孩是一样的，会拉着你说好多以前的故事，一遍又一遍。”</p>
+    <p>在每一次的故事结尾，陈煜颖听到最多的是“年纪大了，不中用了”这样的话。即便是社工们短暂的共情，也无法抚慰老人们面对空虚的无力和无助。人生迟暮，他们少了一些盼头，对着一页又一页撕下的挂历，似乎不断地倾诉才能帮助他们找到一丝慰藉。通过对贴吧中发帖和回复人群的关系分析，我们发现同命人彼此抱团取暖，而与之经历相类似的孤儿群体也常常参与对话，表达他们的感同身受和慰藉。面对失独者这样庞大的群体，关注他们的仅仅只有遭遇相同的那些人，他们的倾诉缺少了听众，当时代的车轮滚滚向前，他们还留在原地，无人问津。谁在倾听，又有谁能倾听？这个答案不得而知。</p>
+    <br>
+    <img src="image/chart6.png" alt="">
+    <span>发帖用户类型与回帖用户类型的对应关系（数据来源：百度失独吧）</span>
+    <span> *数字表示该类人群的发帖/回复条数，已排除广告贴和无法判别身份的用户</span>
+    <p>虽然“非至痛者无以言”，我们却在有限的回复中看到了“倾听者”的蛛丝马迹。通过对贴吧内的失独者主题贴下的回帖内容进行词频分析，我们看到词频较大的部分是一些表示亲缘关系的词汇，比如“孩子”、“妈妈”；而词频较小的部分产生的共同语义就是他们最真挚的祝福和祈愿。在生者坚强的抚慰中，我们看到了一条名为“子女”的纽带，向着我们，向着社会的每个人延伸开去——我们都为人子女，也都将为人父母，以家庭和真情的名义，他们的诉说应该被听见。</p>
+    <br>
+    <img src="image/chart7.png" alt="">
+    <span>回复中用户发言的词频统计（数据来源：百度失独吧）</span>
+    <span> *图中数据表示该词的出现频数，排除了用户自己回复自己的情况</span>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h4>需要被听见</h4>
+    <p>失独父母不敢做梦，但也盼着做梦——他们很可能在梦里和孩子相聚，但这些都不是真实可触的实景。在白天，这些失独父母们还有自己的工作，还可以和熟悉的朋友相约出游，可以在志愿社团的活动中互诉衷肠、抱团取暖，但是到了晚上，孤独和怀念又会随着夜色袭来。47岁的失独父亲李先生接受了我们的采访，他在微博上名为“失独农民”，自从4年前因事故失去儿子，就开始分享自己的故事和回忆，逐渐获得了6万多人的关注。李先生说，孩子走得突然，夫妻俩痛难自已，但家里不只有他们，还有更加悲痛的老父母。因此夫妻俩“不敢在爷爷奶奶的面前表达悲伤的感受”，只能“每天晚上抱着哭”；白天的时候他们还能去田里做做事，把注意力集中在劳作上，但到了晚上，一闲下来，“脑海里又都是儿子的样子”，李先生说，“晚上的时间是真的没有办法”。</p>
+    <br>
+    <img src="image/chart8.png" alt="">
+    <span>失独用户在不同时间段的发帖数汇总（数据来源：百度失独吧&失独者之家）</span>
+    <br>
+    <p>李先生不是个例，我们将贴吧和论坛中失独用户的发帖时间段进行了分类统计，发现从下每天17点起，发帖数量开始持续上升，在20-21点间更是出现了迅速上升，在21点达到了全天最高点，考虑到父母们的年龄和作息习惯，这也应该是他们睡前的时间点，“眼睁睁的瞪着漆黑的夜，幻想着找寻你的踪迹（贴吧用户：天**瞥）”是他们的夜间状态，晚上的同命人们需要被听见。</p>
+    <br>
+    <img src="image/chart9.png" alt="">
+    <span>用户在各节日发帖数量和提及某节日的数量（数据来源：百度失独吧&失独者之家）</span>
+    <span> *图中气泡大小代表该节日下所发帖子的平均字数多少，气泡颜色代表节日类型</span>
+    <br>
+    <p>失独父母不敢过节，特别是那些普天同庆的喜庆节日。我们将失独用户的发帖日期、发帖内容与各个节日进行关联，发现清明并不是同命人们最需要倾诉的日期，甚至远远排不上位，春节、端午、中秋这样的传统的团圆节日，更容易触动失独父母的心弦。过年对他们来说是一件“多么奢侈的事情”，他们最怕在这些时候去和亲戚聚会，见到别人家团圆的样子，过往的团聚岁月又会浮现面前——“街邻过年团聚笑，我却撕心泪流（贴吧用户：奇**58）”。除此以外，父亲节、母亲节这样相关的日子也同样让失独父母们心伤，吧友“六月**1”是一个失独母亲，但她却觉得“母亲”这个称谓“再也不属于我了”，在母亲节，她只感受到了更大的悲伤。在这些喜庆的节日里，在浓浓的节日氛围下，失独父母们需要被听见。</p>
+    <br>
+    <img src="image/chart10.png" alt="">
+    <span>不同离世时长下父母的情绪分布（数据来源：百度失独吧&失独者之家）</span>
+    <br>
+    <p>失独父母的伤痛是难以排解的，往往只是被深深藏在心底。我们根据孩子的去世时长，分类测量了失独用户们的发言感情，但其实几乎没有差别——无论是去世不到一年，还是去世10年以上，失独父母们的消极情绪都几乎没有减弱，甚至有所升高。无论孩子去世了多久，失独父母们都需要有人来帮助他们排解负面情绪。</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h4>结语</h4>
+    <p>由于我们的数据主要来源于百度失独吧和失独者之家，因此不可避免地会产生一定的偏差，只能反映出部分在社媒上发声的失独父母的状况。但我们也可以去想象，那些不会在公共社媒上发言的失独者们，他们把悲伤的回忆藏在心底，同样可能面临无处、无人可以倾诉的困境。</p>
+    <p>同时，这些数据和采访也足以反映一些现状——发声的失独父母普遍年龄偏大，但依旧尝试着在贴吧和论坛中不熟练地打出一封封写给孩子们的书信；他们可能也在努力寻找团体，参加各类公益组织，积极与同命人们抱团取暖，但每到深夜或者佳节，无论事情已经过去多久，无处倾诉的苦痛感又会浮上心头，悲伤也难以随着时间消散。也许论坛和贴吧里不止失独者们在发声和倾听，但是倾听者仍然是少且同质，同命人们依旧成为了一个“偏居一隅”的小团体，因为他们的不幸是相同的，他们之间有共同语言，会相互劝慰，相互鼓励，彼此也容易接受，成为了城市里一个个隐秘的孤岛。</p>
+    <p>“暖馨家园”负责人柏万青说，“每当有人让我去劝慰那些尚未从痛苦中走出来的对象，我一般不会去劝慰，因为这个时候简单的劝慰是没有效果的，应该允许他们流泪、甚至痛哭，释放悲伤情绪”。固然我们难以感同身受地理解他们的伤痛，但希望更多的个人和群体去尝试尽力倾听，让失独者所说不仅仅成为贴吧、论坛里的只言片语，让这片“孤岛”与我们产生更多的联结。</p>
+	<br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+</div>
+</body>
+</html>
